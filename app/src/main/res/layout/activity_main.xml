@@ -14,4 +14,11 @@
       android:layout_height="wrap_content"
       android:text="ISOLUTION출퇴근 스캐너"
       android:onClick="startScanner"/>
+
+  <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="두번째 페이지이동"
+      android:onClick="toSecondPage"/>
+
 </LinearLayout>
