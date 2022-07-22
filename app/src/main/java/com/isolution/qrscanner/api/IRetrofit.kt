@@ -11,7 +11,6 @@ interface IRetrofit {
   @GET("/api/users?page=2")
   fun searchPhotos(@Query("query") searchTerm: String) : Call<JsonElement>
 
-  @Headers("Authorization: ")
   @POST("/api/v1/commutes")
   fun insertCommute(@Body params: HashMap<String, Any>) : Call<JsonElement>
 

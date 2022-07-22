@@ -12,12 +12,12 @@ class RetrofitManager {
     val instance = RetrofitManager();
   }
 
-  private val iRetrofit: IRetrofit? = Client.getClient("http://ec2-52-78-134-72.ap-northeast-2.compute.amazonaws.com:8080")?.create(IRetrofit::class.java);
+  private val retro: IRetrofit? = Client.getClient("http://ec2-52-78-134-72.ap-northeast-2.compute.amazonaws.com:8080")?.create(IRetrofit::class.java);
 
   fun searchPhotos(searchTerm: String?, completion: (String) -> Unit) {
     val term: String = searchTerm.let{ it }?: "";
 
-    val call: Call<JsonElement> = iRetrofit?.searchPhotos(searchTerm = term).let {
+    val call: Call<JsonElement> = retro?.searchPhotos(searchTerm = term).let {
       it
     }?: return
 
@@ -36,6 +36,7 @@ class RetrofitManager {
   }
 
   fun insertCommute(completion: (String) -> Unit) {
+    Log.d(TAG, "[SUPERIL LOG] String ::::: =>>> ${String.toString()}");
 //    val term: String = searchTerm.let{ it }?: "";
 //
 //    val call: Call<JsonElement> = iRetrofit?.searchPhotos(searchTerm = term).let {
@@ -45,9 +46,9 @@ class RetrofitManager {
 
     var map = HashMap<String, Any>();
     map.put("type", "O");
-    map.put("qrToken", "")
+    map.put("qrToken", "aaaaaaaaaa")
     // 응답결과 받는 곳
-    iRetrofit?.insertCommute(map)?.enqueue(object : retrofit2.Callback<JsonElement>{
+    retro?.insertCommute(map)?.enqueue(object : retrofit2.Callback<JsonElement>{
       override fun onResponse(call: Call<JsonElement>, response: Response<JsonElement>) {
         Log.d(TAG, "[SUPERIL LOG] RetrofitManager - onResponse() called / t : ${response.raw()}");
         completion(response.raw().toString());
