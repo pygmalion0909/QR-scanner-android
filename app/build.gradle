@@ -33,6 +33,8 @@ android {
 
 dependencies {
 
+    // logging intercepter
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
     // qr scanner
     implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
     // retrofit
